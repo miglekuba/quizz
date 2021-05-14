@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./App.css";
-import HomePage from "./components/Homepage"
+// import HomePage from "./components/Homepage"
+import Login from "./components/Login"
 
-function App() {
-  return (
-  <HomePage/>
-  );
+export default class App extends Component{
+render(){
+    return (
+        <Login/>
+    )
+} 
 }
-export default App;
-
