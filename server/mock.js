@@ -12,11 +12,11 @@ Question.insertMany([
         isCorrect: true,
       }, 
       {
-        title: "james",
+        title: "nika",
         isCorrect: false,
       },
       {
-        title: "ransome",
+        title: "tom",
         isCorrect: false,
       },
     ],
