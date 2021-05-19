@@ -1,25 +1,44 @@
 const Question = require("./models/Question");
 const Quiz = require("./models/Quiz");
 const User = require("./models/User");
-require ("./db.js")
+require("./db.js");
 
-Question.insertMany([
+
+const mockQuestions = async () => {
+  try {
+    await Question.insertMany([
+      {
+        title: "What is the largest ocean in the world ",
+        answers: [
+          {
+            title: "Pacific",
+            isCorrect: true,
+          },
+          {
+            title: "Indian",
+            isCorrect: false,
+          },
+          {
+            title: "Atlantic",
+            isCorrect: false,
+          },
+        ],
+      },
+    ]);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+Quiz.insertMany([
   {
-    title: "What Is ur name?",
-    answers: [
-      {
-        title: "migle",
-        isCorrect: true,
-      }, 
-      {
-        title: "nika",
-        isCorrect: false,
-      },
-      {
-        title: "tom",
-        isCorrect: false,
-      },
-    ],
-  },
+    name: "Quiz1",
+    quostionsList: [
+      { name: Question.title,
+
+    }
+  ]
+  }
 ]);
 
+module.exports = mockQuestions;
