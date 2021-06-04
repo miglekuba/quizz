@@ -1,8 +1,8 @@
-const Question = require("../../models/Question.js");
+const Quiz = require("../../models/Quiz.js");
 
 const getQuizzes = async (req, res) => {
   try {
-    const createQuiz = await Question.find();
+    const createQuiz = await Quiz.find();
     res.status(200).json(createQuiz);
     
   } catch (error) {
@@ -14,4 +14,14 @@ const createQuiz = (req, res) => {
   res.send("quiz creation");
 };
 
-module.exports = { getQuizzes, createQuiz };
+const getQuizById = async (req, res) => {
+  try {
+    const quiz = await Quiz.findById(req.params.id);
+    res.send(quiz)
+  
+  } catch (error) {
+    
+  }
+}
+
+module.exports = { getQuizzes, createQuiz, getQuizById };

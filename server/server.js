@@ -1,7 +1,7 @@
 const express = require("express");
 require("./db.js");
 const quizRoute = require("./api/routes/quiz-routes");
-const mockQuestions = require("./mock.js");
+const setUpDatabase = require("./setup-db.js");
 
 const app = express();
 app.use(express.json());
@@ -17,7 +17,7 @@ const port = 5000;
 app.listen(
   port,
   async () => {
-    await mockQuestions();
+    await setUpDatabase();
 	console.log(`Server runnning on port: ${port}`)
   },
 );
