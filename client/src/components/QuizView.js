@@ -4,13 +4,13 @@ import React, { useState, useEffect } from "react";
 
 async function fetchQuiz(id) {
   const quizResponse = await fetch(
-    "http://localhost:5000/quizzes/60bf5abbdf37c45239f4e39d"
+    `http://localhost:5000/quizzes/${id}`
   ).then((res) => res.json());
   console.log(quizResponse, "get quiz");
   return quizResponse;
 }
 
-function Quiz({ match }) {
+function QuizView({ match }) {
   const [quiz, setQuiz] = useState({});
   const { id } = match.params;
 
@@ -20,7 +20,9 @@ function Quiz({ match }) {
     }
     fetchData();
   }, [id]);
-  return <p>{JSON.stringify(quiz)}</p>;
+  return(
+    <p>{JSON.stringify(quiz)}</p>
+  );
 }
 
 // On the home page i need to fetch  all quizzes (every quiz id)
@@ -29,4 +31,4 @@ function Quiz({ match }) {
 // in quiz component need to make request to backend with axios or node fetch. To get
 // the data
 
-export default Quiz;
+export default QuizView;

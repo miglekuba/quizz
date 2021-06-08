@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Flex } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import "../App.css";
 export default class HomePage extends Component {
   render() {
     return (
-      <div className="main">
-        <h1>Welcome to the Quiz Manager</h1>
-        <Link to="/quizzes">
-          <Button colorScheme="teal" variant="outline">
-            View all Quizzes
-          </Button>
-        </Link>
-      </div>
+      <>
+        <Flex height="20vh" alignItems="center" justifyContent="center">
+          <h1>Welcome to QU2</h1>
+        </Flex>
+        <Flex height="50vh" alignItems="center" justifyContent="center">
+          <Link to="/quizzes">
+            <Button colorScheme="teal" variant="outline">
+              View all Quizzes
+            </Button>
+          </Link>
+        </Flex>
+      </>
     );
   }
 }
