@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 async function fetchQuiz(id) {
   const quizResponse = await fetch(
-    "http://localhost:5000/quizzes/60bf2f0abf87990730431423"
+    "http://localhost:5000/quizzes/60bf5abbdf37c45239f4e39d"
   ).then((res) => res.json());
   console.log(quizResponse, "get quiz");
   return quizResponse;
