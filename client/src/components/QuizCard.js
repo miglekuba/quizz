@@ -1,30 +1,25 @@
 import React from "react";
-import { Box, Flex } from "@chakra-ui/react";
+import { Button, Box, SimpleGrid } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 function QuizCard(props) {
   return (
     <Link to={`/quizzes/${props.id}`}>
-      <Box
-        maxW="sm"
-        borderWidth="4px"
-        borderRadius="lg"
-        overflow="hidden"
-        color="black"
-        bg="#E9D8FD"
-        m="10px"
-      >
-        <Box
-          p="10"
-          fontWeight="semibold"
-          as="h4"
-          lineHeight="tight"
-          isTruncated
+      <SimpleGrid minChildWidth="220px" spacing="20px">
+        <Button
+          height="30vh"
+          boxShadow="xl"
+          size="lg"
+          borderWidth="2px"
+          borderRadius="lg"
+          color="black"
+          bg="#ECC94B"
+          m="20px"
         >
           <strong>{props.name}</strong>
-        </Box>
-      </Box>
+        </Button>
+      </SimpleGrid>
     </Link>
   );
 }
- export default QuizCard;
+export default QuizCard;

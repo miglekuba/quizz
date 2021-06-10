@@ -1,23 +1,28 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Flex } from "@chakra-ui/react";
-import { Button } from "@chakra-ui/react";
+import { Button, Heading, Container, Box, Text } from "@chakra-ui/react";
 import "../App.css";
 export default class HomePage extends Component {
   render() {
     return (
-      <>
-        <Flex height="20vh" alignItems="center" justifyContent="center">
-          <h1>Welcome to QU2</h1>
-        </Flex>
-        <Flex height="50vh" alignItems="center" justifyContent="center">
+      // <Container bg="green" maxW="container.xl" h="800px">
+      <Container bg="rgb(74, 194, 0)" p="50" marginTop="30vh">
+        <Box alignItems="center" h="180">
+          <Heading p="50" align="center" size="3xl">
+            Welcome to Quiz Manager
+          </Heading>
+        </Box>
+        <Box align="center">
+          <Text p="30" fontSize="xl">
+            Best place to keep and manage your quizzes
+          </Text>
           <Link to="/quizzes">
-            <Button colorScheme="teal" variant="outline">
+            <Button bg="#ECC94B" variant="outline">
               View all Quizzes
             </Button>
           </Link>
-        </Flex>
-      </>
+        </Box>
+      </Container>
     );
   }
 }

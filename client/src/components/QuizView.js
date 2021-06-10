@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from "react";
+import {
+  Flex,
+  Box,
+  Button,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@chakra-ui/react";
 // import { Link } from "react-router-dom";
 // import "../App.css";
 
 async function fetchQuiz(id) {
-  const quizResponse = await fetch(
-    `http://localhost:5000/quizzes/${id}`
-  ).then((res) => res.json());
+  const quizResponse = await fetch(`http://localhost:5000/quizzes/${id}`).then(
+    (res) => res.json()
+  );
   console.log(quizResponse, "get quiz");
   return quizResponse;
 }
 
 function QuizView({ match }) {
-  const [quiz, setQuiz] = useState({});
+  const [quiz, setQuiz] = useState();
   const { id } = match.params;
 
   useEffect(() => {
@@ -20,15 +30,34 @@ function QuizView({ match }) {
     }
     fetchData();
   }, [id]);
-  return(
-    <p>{JSON.stringify(quiz)}</p>
+  return (
+    <Flex height="100vh" alignItems="center" justifyContent="center">
+      <Accordion allowMultiple w="400px">
+        {quiz &&
+          quiz.questionList.map((q) => (
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box>
+                    <p>{q.question}</p>
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                {q.answers.map((a) => (
+                  <Box bg="#ECC94B" align="center" justify="center">
+                  <Button m="20px">
+                    <p>{a.title}</p>
+                  </Button>
+                  </Box>
+                ))}
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
+      </Accordion>
+    </Flex>
   );
 }
-
-// On the home page i need to fetch  all quizzes (every quiz id)
-// .map to a component which displays this link
-// take quiz id and map the link component which has the id in "to" property(line 11)
-// in quiz component need to make request to backend with axios or node fetch. To get
-// the data
 
 export default QuizView;
