@@ -7,7 +7,7 @@ function QuizCard(props) {
     <Link to={`/quizzes/${props.id}`}>
       <SimpleGrid minChildWidth="220px" spacing="20px">
         <Button
-          height="30vh"
+          height="15vh"
           boxShadow="xl"
           size="lg"
           borderWidth="2px"

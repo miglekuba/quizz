@@ -23,15 +23,4 @@ const getQuizById = async (req, res) => {
     
   }
 }
-
-const getQuestionById = async (req, res) => {
-  try {
-    const question = await Quiz.findQuestionById(req.params.questionList);
-    res.send(quiz)
-  
-  } catch (error) {
-    
-  }
-}
-
-module.exports = { getQuizzes, createQuiz, getQuizById, getQuestionById };
+module.exports = { getQuizzes, createQuiz, getQuizById};

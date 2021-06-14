@@ -30,12 +30,12 @@ const setUpDatabase = async () => {
               question: "Where is world's largest coral reef system?",
               answers: [
                 {
-                  title: "Australia",
-                  isCorrect: true,
-                },
-                {
                   title: "Asia",
                   isCorrect: false,
+                },
+                {
+                  title: "Australia",
+                  isCorrect: true,
                 },
                 {
                   title: "South America",

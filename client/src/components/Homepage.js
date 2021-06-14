@@ -6,15 +6,15 @@ export default class HomePage extends Component {
   render() {
     return (
       // <Container bg="green" maxW="container.xl" h="800px">
-      <Container bg="rgb(74, 194, 0)" p="50" marginTop="30vh">
-        <Box alignItems="center" h="180">
+      <Container bg="#5E8BFB" p="50" marginTop="30vh" borderRadius="lg" >
+        <Box  alignItems="center" h="140">
           <Heading p="50" align="center" size="3xl">
-            Welcome to Quiz Manager
+            Quiz Manager
           </Heading>
         </Box>
         <Box align="center">
           <Text p="30" fontSize="xl">
-            Best place to keep and manage your quizzes
+            The best place to keep and manage your quizzes
           </Text>
           <Link to="/quizzes">
             <Button bg="#ECC94B" variant="outline">
