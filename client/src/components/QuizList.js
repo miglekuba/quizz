@@ -10,8 +10,19 @@ async function fetchAllQuizzes(id) {
   return quizzesResponse;
 }
 
+
 function QuizList({ match }) {
   const [quizzes, setQuizzes] = useState([]);
+
+  async function deleteQuiz(id) {
+    const deleteQuizResponse = await fetch(
+      `http://localhost:5000/quizzes/${id}`,
+      { method: "DELETE" }
+    );
+    console.log(deleteQuizResponse, "quiz deleted")
+    setQuizzes(await fetchAllQuizzes())
+    return deleteQuizResponse;
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -22,7 +33,7 @@ function QuizList({ match }) {
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
       {quizzes.map((q) => (
-        <QuizCard id={q._id} name={q.name}/>
+        <QuizCard id={q._id} name={q.name} deleteQuiz={deleteQuiz} />
       ))}
     </Flex>
   );
@@ -35,3 +46,10 @@ export default QuizList;
 // take quiz id and map the link component which has the id in "to" property(line 11)
 // in quiz component need to make request to backend with axios or node fetch. To get
 // the data
+
+
+
+//Editing
+
+//1.Endpoint /add function
+//2. Create Frontend/
