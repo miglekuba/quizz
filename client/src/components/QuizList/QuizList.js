@@ -11,7 +11,7 @@ async function fetchAllQuizzes(id) {
 }
 
 
-function QuizList({ match }) {
+function QuizList() {
   const [quizzes, setQuizzes] = useState([]);
 
   async function deleteQuiz(id) {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 // import EditQuiz from "./EditQuiz"
 
-function QuizCard(props) {
+function QuizCard({ id, name, deleteQuiz }) {
   return (
     <Box
       bg="white"
@@ -13,7 +13,7 @@ function QuizCard(props) {
       borderRadius="lg"
       minWidth="220px"
     >
-      <Link to={`/quizzes/${props.id}`}>
+      <Link to={`/quizzes/${id}`}>
         <SimpleGrid>
           <Button
             height="12vh"
@@ -25,15 +25,17 @@ function QuizCard(props) {
             bg="#ECC94B"
             m="20px"
           >
-            <strong>{props.name}</strong>
+            <strong>{name}</strong>
           </Button>
         </SimpleGrid>
       </Link>
       <SimpleGrid columns={5} spacing="5px" p="5px">
-        <Link to={`/quizzes/${props.id}/edit`}>
-          <IconButton size="sm" icon={<EditIcon/>} />
+        <Link to={`/quizzes/${id}/edit`}>
+          <IconButton size="sm" icon={<EditIcon />} />
         </Link>
-          <IconButton size="sm" icon={<DeleteIcon />} onClick={()=>{props.deleteQuiz(props.id)}} />
+        <IconButton
+          size="sm" icon={<DeleteIcon />} onClick={() => {deleteQuiz(id)}}
+        />
       </SimpleGrid>
     </Box>
   );

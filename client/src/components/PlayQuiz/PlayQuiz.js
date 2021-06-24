@@ -15,7 +15,7 @@ async function fetchQuiz(id) {
 }
 
 
-function QuizView({ match }) {
+function PlayQuiz({ match }) {
   const [quiz, setQuiz] = useState();
   const { id } = match.params;
 
@@ -38,4 +38,4 @@ function QuizView({ match }) {
   );
 }
 
-export default QuizView;
+export default PlayQuiz;

@@ -1,5 +1,5 @@
 const Quiz = require("../../models/Quiz.js");
-const AddQuiz = require("../../models/AddQuiz.js");
+// const AddQuiz = require("../../models/AddQuiz.js");
 
 const getQuizzes = async (req, res) => {
   try {
@@ -23,12 +23,27 @@ const getQuizById = async (req, res) => {
 
 const deleteQuiz = async (req, res) => {
   try {
-    const quiz = await Quiz.deleteOne({ _id: req.params.id });
+    const deleteQuiz = await Quiz.deleteOne({ _id: req.params.id });
     res.send("quiz deleted");
   } catch (error) {
     res.status(500);
   }
 };
+
+// const editQuiz = async (req, res) => {
+//   try {
+//     const quiz = await Quiz.findOneAndReplace ({ _id: req.params.id }, req.body);
+    
+
+
+
+
+//     res.send("quiz updated");
+
+//   } catch (error) {
+//     res.status(404).json({error, message:"Update failed"});
+//   }
+// };
 
 // const addQuiz = async (req, res) => {
 //   const quiz = req.body;
@@ -44,18 +59,5 @@ const deleteQuiz = async (req, res) => {
 //   }
 // }
 
-// const editQuiz = (req, res) => {
-//   res.send("quiz creation");
-// };
 
-// const getQuizById = async (req, res) => {
-//   try {
-//     const quiz = await Quiz.findById(req.params.id);
-//     res.send(quiz)
-
-//   } catch (error) {
-
-//   }
-// }
-
-module.exports = { getQuizzes, createQuiz, getQuizById, deleteQuiz };
+module.exports = { getQuizzes, createQuiz, getQuizById, deleteQuiz};
