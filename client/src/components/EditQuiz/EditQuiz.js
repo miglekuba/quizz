@@ -13,10 +13,25 @@ function EditQuiz({ match }) {
   const [quiz, setQuiz] = useState();
   const { id } = match.params;
 
+  function handleQuizNameChange(event) {
+    const newQuizName = event.target.value;
+    setQuiz((currentQuiz) => {
+      return {
+        ...currentQuiz, // add a smooth operator to create newCurrent quiz object
+        name: newQuizName,
+      };
+    });
+  }
 
-function handleQuizNameChange(event){
-
-}
+  function handleQuestionChange(newQuestionTitle, questionIndex) {
+    setQuiz((currentQuiz) => {
+      currentQuiz.questionList[questionIndex].question = newQuestionTitle;
+      return {
+        ...currentQuiz,
+      };
+    });
+    console.log(quiz);
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -32,14 +47,22 @@ function handleQuizNameChange(event){
     <form>
       <h1>Update Quiz Name:</h1>
       <div>
-        <input size="40" defaultValue={quiz.name} onChange={handleQuizNameChange} />
+        <input
+          size="40"
+          defaultValue={quiz.name}
+          onChange={handleQuizNameChange}
+        />
       </div>
       <h1>Update Question: </h1>
       {quiz.questionList.map((q, i) => (
-          <div>
-            <input size="40" defaultValue={q.question} />
-          </div>
-        ))}
+        <div>
+          <input
+            size="40"
+            defaultValue={q.question}
+            onChange={(event) => handleQuestionChange(event.target.value, i)}
+          />
+        </div>
+      ))}
       <input type="submit" />
     </form>
   );
