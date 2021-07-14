@@ -31,7 +31,7 @@ function PlayQuiz({ match }) {
     <Flex height="100vh" alignItems="center" justifyContent="center">
       <Accordion allowMultiple w="400px">
         {quiz && quiz.questionList.map((q) => (
-           <Question data={q}/> 
+           <Question quiz={q}/> 
           ))}
       </Accordion>
     </Flex>

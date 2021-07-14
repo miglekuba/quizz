@@ -5,7 +5,7 @@ import "../App.css";
 export default class HomePage extends Component {
   render() {
     return (
-      // <Container bg="green" maxW="container.xl" h="800px">
+     
       <Container bg="#5E8BFB" p="50" marginTop="30vh" borderRadius="lg" >
         <Box  alignItems="center" h="140">
           <Heading p="50" align="center" size="3xl">

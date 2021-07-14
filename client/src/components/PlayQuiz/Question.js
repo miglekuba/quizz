@@ -15,7 +15,7 @@ const ANSWER_STATES = {
   UNANSWERED: "#5E8BFB",
 };
 
-function Question({ data }) {
+function Question({ quiz }) {
   const [answerState, setAnswerState] = useState(ANSWER_STATES.UNANSWERED);
 
   function handleClick(a, e) {
@@ -32,13 +32,13 @@ function Question({ data }) {
               <h2>
                 <AccordionButton>
                   <Box>
-                    <p>{data.question}</p>
+                    <p>{quiz.question}</p>
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                {data.answers.map((a) => (
+                {quiz.answers.map((a) => (
                   <Box bg={answerState} align="center" justify="center">
                   <Button onClick={(e)=>handleClick(a,e)} m="20px" bg="#ECC94B">
                     <p>{a.title}</p>
