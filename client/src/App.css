@@ -1,10 +1,23 @@
 .form-container {
-  margin: 30px auto;
-	width: 90%;
-	max-width: 600px;
-	border-radius: 5px;
-  background-color: #b9c6e6;
+  margin: 50px auto;
+	width: 80%;
+	max-width: 540px;
+	border-radius: 10px;
+  background-color: #5E8BFB;
   padding: 20px;
+}
+
+.btn {
+  margin: auto;
+  width: auto;
+  padding: 10px;
   
 }
-  
+.form-container-quiz {
+  margin:10px auto;
+	width: 80%;
+	max-width: 540px;
+  border-radius: 10px;
+  background-color: #CCE3FB;
+  padding: 20px
+}
