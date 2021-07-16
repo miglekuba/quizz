@@ -37,6 +37,7 @@ function Question({ quiz }) {
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
+                
               <AccordionPanel pb={4}>
                 {quiz.answers.map((a) => (
                   <Box bg={answerState} align="center" justify="center">
