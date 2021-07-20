@@ -38,18 +38,18 @@ const editQuiz = async (req, res) => {
   }
 };
 
-// const addQuiz = async (req, res) => {
-//   const quiz = req.body;
-//   const newQuiz = new Quiz(quiz)
+const addQuiz = async (req, res) => {
+  const quiz = req.body;
+  const newQuiz = new Quiz(quiz)
 
-//   try {
-//     await newQuiz.save()
-//     res.status(201).json(newPost)
+  try {
+    await newQuiz.save()
+    res.status(201).json(newQuiz)
 
-//   } catch (error) {
-//     res.status(409).json({message: error.message})
+  } catch (error) {
+    res.status(500).json({message: error.message})
 
-//   }
-// }
+  }
+}
 
-module.exports = { getQuizzes, createQuiz, getQuizById, deleteQuiz, editQuiz };
+module.exports = { getQuizzes, createQuiz, getQuizById, deleteQuiz, editQuiz, addQuiz };

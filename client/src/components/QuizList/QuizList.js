@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QuizCard from "./QuizCard";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Button, GridItem,IconButton,EditIcon } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 async function fetchAllQuizzes(id) {
   const quizzesResponse = await fetch("http://localhost:5000/quizzes").then(
@@ -11,7 +12,7 @@ async function fetchAllQuizzes(id) {
 }
 
 
-function QuizList() {
+function QuizList({ id }) {
   const [quizzes, setQuizzes] = useState([]);
 
   async function deleteQuiz(id) {
@@ -31,14 +32,21 @@ function QuizList() {
     fetchData();
   }, []);
   return (
-    <Flex height="100vh" alignItems="center" justifyContent="center">
+<Flex bg="#5E8BFB" align="center" flexDirection="column" marginTop="30vh" p="20px 0px">
+    <Flex>
       {quizzes.map((q) => (
         <QuizCard id={q._id} name={q.name} deleteQuiz={deleteQuiz} />
       ))}
     </Flex>
+    <Flex mt="5vh">
+        <Link to={`/quizzes/add`}>
+          <Button className="btn" bg="#ECC94B" variant="outline"  >
+            Add new quiz</Button>
+        </Link>
+        </Flex>
+</Flex>
   );
-}
-
+      }
 export default QuizList;
 
 // On the home page i need to fetch  all quizzes (every quiz id)

@@ -2,21 +2,20 @@ import React from "react";
 import { Button, SimpleGrid, Box, IconButton } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
-// import EditQuiz from "./EditQuiz"
 
 function QuizCard({ id, name, deleteQuiz }) {
   return (
     <Box
       bg="white"
       borderWidth="2px"
-      m="20px"
+      margin = "0px 12px"
       borderRadius="lg"
       minWidth="220px"
     >
       <Link to={`/quizzes/${id}`}>
         <SimpleGrid>
           <Button
-            height="12vh"
+            height="10vh"
             boxShadow="xl"
             size="lg"
             borderWidth="2px"

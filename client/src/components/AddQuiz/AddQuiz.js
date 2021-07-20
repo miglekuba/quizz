@@ -1,20 +1,21 @@
+
 import React, { useState, useEffect } from "react";
-import { Spinner, Box, Checkbox, Button, Input, Grid } from "@chakra-ui/react";
-import  { Redirect } from 'react-router-dom'
+import { Box, Checkbox, Button, Input, Grid } from "@chakra-ui/react";
 
 
-async function fetchQuiz(id) {
-  const quizResponse = await fetch(`http://localhost:5000/quizzes/${id}`).then(
-    (res) => res.json()
-  );
-  console.log(quizResponse, "get quiz");
-  return quizResponse;
-}
-
-function EditQuiz({ match }) {
-  const [quiz, setQuiz] = useState();
-  const [shouldRedirect, setShouldRedirect] = useState(false)
-  const { id } = match.params;
+function AddQuiz({ match }) {
+  const [quiz, setQuiz] = useState({
+    name: "",
+    questionList: [
+      {
+        question: "", answers: [
+          { title: "", isCorrect: false },
+          { title: "", isCorrect: false },
+          { title: "", isCorrect: false }
+        ]
+      }
+    ]
+  });
 
   function handleQuizNameChange(event) {
     const newQuizName = event.target.value;
@@ -60,35 +61,20 @@ function EditQuiz({ match }) {
 
   function submitChanges() {
     const submitChangesResponse = fetch(
-      `http://localhost:5000/quizzes/${id}/edit`,
+      `http://localhost:5000/quizzes/add`,
       {
-        method: "PUT",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(quiz),
       }
     );
     console.log(submitChangesResponse, "quiz updated");
-    // return submitChangesResponse;
-    setShouldRedirect(true)
+    return submitChangesResponse;
+
   }
-
-  useEffect(() => {
-    async function fetchData() {
-      setQuiz(await fetchQuiz(id));
-    }
-    fetchData();
-  }, [id]);
-
-  if (!quiz) {
-    return <Spinner />;
-  }
-
-  if (shouldRedirect){
-    return <Redirect to ='/quizzes'/>
-  }
-
 
   return (
+  
     <>
       <Grid className="form-container" templateColumns="repeat(1, 1fr)" gap={6}>
         <Grid className="form-container-quiz" templateColumns="repeat(1, 1fr)" gap={6}>
@@ -138,6 +124,4 @@ function EditQuiz({ match }) {
   );
 }
 
-export default EditQuiz;
-
-//in order to make changes editable quiz component need make a request to /quizzes/:id/edit which would be the entire quiz object(EditQuiz)
+export default AddQuiz;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Heading, Container, Box, Text } from "@chakra-ui/react";
+import { Button, Heading, Container, Box, Text} from "@chakra-ui/react";
 import "../App.css";
 export default class HomePage extends Component {
   render() {
