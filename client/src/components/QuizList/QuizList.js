@@ -32,7 +32,7 @@ function QuizList({ id }) {
     fetchData();
   }, []);
   return (
-<Flex bg="#5E8BFB" align="center" flexDirection="column" marginTop="30vh" p="20px 0px">
+<Flex  align="center" flexDirection="column" marginTop="30vh" p="20px 0px">
     <Flex>
       {quizzes.map((q) => (
         <QuizCard id={q._id} name={q.name} deleteQuiz={deleteQuiz} />
