@@ -1,9 +1,24 @@
-body {
-    background-color: #2a3742;
-    font-family: 'Montserrat', sans-serif;
-  }
-  .main {
-    color: #ff7373;
-    text-align: center; 
-  }
+.form-container {
+  margin: 50px auto;
+  margin-top: 12vh;
+	width: 80%;
+	max-width: 540px;
+	border-radius: 10px;
+  background-color: #5E8BFB;
+  padding: 20px;
+}
+
+.btn {
+  margin: auto;
+  width: auto;
+  padding: 10px;
   
+}
+.form-container-quiz {
+  margin:10px auto;
+	width: 100%;
+	max-width: 560px;
+  border-radius: 10px;
+  background-color: #CCE3FB;
+  padding: 20px
+}
