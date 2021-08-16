@@ -1,35 +1,42 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Heading, Container, Box, Text, Input } from "@chakra-ui/react";
+import { Button, Grid, Heading, Container, Box, Text, Input, GridItem } from "@chakra-ui/react";
 import "../App.css";
 export default class HomePage extends Component {
   render() {
     return (
-
-      <Container bg="#5E8BFB" p="50" marginTop="30vh" borderRadius="lg" >
-        <Box alignItems="center" h="140">
-          <Heading p="50" align="center" size="3xl">
-            Quiz Manager
-          </Heading>
-        </Box>
-        <Box align="center">
-          <Text p="30" fontSize="xl">
-            The best place to keep and manage your quizzes
-          </Text>
+      <Container bg="#5E8BFB" align="center" marginTop="300" borderRadius="lg" >
+        <Grid
+          templateColumns="repeat(4, 1fr)"
+          gap={1}>
           <Box>
-          <Input maxW="20vh" m="1vh"
-              type="text"
-              placeholder="Enter username"></Input>
-            <Input maxW="20vh"
-              type="password"
-              placeholder="Enter password"></Input>
-            <Link to="/quizzes">
-              <Button m="1vh" bg="#ECC94B" variant="outline">
-                Login
-            </Button>
-            </Link>
+            <GridItem colSpan={2}>
+              <Heading size="3xl"  m="10">
+                Welcome to the Quiz Manager!
+              </Heading>
+            </GridItem>
           </Box>
-        </Box>
+          <GridItem colSpan={3}>
+            <Box bg="#5E8BFB" borderRadius="lg" m="2">
+              <Input maxW="180" mt="14"
+                type="text" bg="white"
+                placeholder="Enter username"></Input>
+              <Input maxW="180" mt="6"
+                type="password" bg="white"
+                placeholder="Enter password"></Input>
+              <Link to="/quizzes">
+                <Button className="btn" m="6" bg="#ECC94B">
+                  Log in
+                </Button>
+              </Link>
+              <Box p="4">
+                <Text>
+                  Don't have an account? <Link className="signupLink" to="/signup" >Sign up</Link>
+                </Text>
+              </Box>
+            </Box>
+          </GridItem>
+        </Grid>
       </Container>
     );
   }
