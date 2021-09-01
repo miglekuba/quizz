@@ -9,7 +9,7 @@ export default class HomePage extends Component {
         <Grid
           templateColumns="repeat(4, 1fr)"
           gap={1}>
-          <Box>
+          <Box >
             <GridItem colSpan={2}>
               <Heading size="3xl"  m="10">
                 Welcome to the Quiz Manager!
@@ -17,7 +17,7 @@ export default class HomePage extends Component {
             </GridItem>
           </Box>
           <GridItem colSpan={3}>
-            <Box bg="#5E8BFB" borderRadius="lg" m="2">
+            <Box bg="#5E8BFB" m="2">
               <Input maxW="180" mt="14"
                 type="text" bg="white"
                 placeholder="Enter username"></Input>

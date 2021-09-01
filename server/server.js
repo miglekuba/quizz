@@ -1,18 +1,16 @@
 const express = require("express");
 const cors = require('cors')
 require("./db.js");
-const quizRoute = require("./api/routes/quiz-routes");
+const quizRoutes = require("./api/routes/quiz-routes");
+const authRoutes = require("./api/routes/auth-routes")
 const setUpDatabase = require("./setup-db.js");
 
 const app = express();
 app.use(express.json());
 app.use(cors())
 
-app.use("/quizzes", quizRoute);
-
-app.get("/", (req, res) => {
-  res.send("hey!");
-});
+app.use("/quizzes", quizRoutes);
+app.use("/", authRoutes)
 
 const port = 5000;
 
