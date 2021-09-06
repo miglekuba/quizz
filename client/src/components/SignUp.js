@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Heading, Container, Box, Input } from "@chakra-ui/react";
 import "../App.css";
-export default class HomePage extends Component {
-    render() {
-        return (
 
+function SignUp()  {
+        return (
             <Container bg="#5E8BFB" p="10" marginTop="300" borderRadius="lg" >
                 <Box alignItems="center" h="150">
                     <Heading  maxW="500"  pt="3" m="3" align="center" size="3xl">
@@ -29,5 +28,5 @@ export default class HomePage extends Component {
                     </Box>
             </Container>
         );
-    }
 }
+export default SignUp;

@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Box, Checkbox, Button, Input, Grid } from "@chakra-ui/react";
 
 
@@ -74,7 +73,7 @@ function AddQuiz({ match }) {
   }
 
   return (
-  
+
     <>
       <Grid className="form-container" templateColumns="repeat(1, 1fr)" gap={6}>
         <Grid className="form-container-quiz" templateColumns="repeat(1, 1fr)" gap={6}>
@@ -105,7 +104,6 @@ function AddQuiz({ match }) {
                   defaultValue={a.title}
                   onChange={(event) =>
                     handleAnswerChange(event.target.value, qi, ai)
-
                   }
                 >
                 </Input>
@@ -117,7 +115,7 @@ function AddQuiz({ match }) {
         <Grid className="btn" >
           <Button bg="#ECC94B" variant="outline" onClick={submitChanges}>
             Submit
-        </Button>
+          </Button>
         </Grid>
       </Grid>
     </>

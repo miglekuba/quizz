@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import QuizCard from "./QuizCard";
-import { Flex, Button, GridItem,IconButton,EditIcon } from "@chakra-ui/react";
+import { Flex, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 async function fetchAllQuizzes(id) {
@@ -10,7 +10,6 @@ async function fetchAllQuizzes(id) {
   console.log(quizzesResponse, "get all quizzes");
   return quizzesResponse;
 }
-
 
 function QuizList({ id }) {
   const [quizzes, setQuizzes] = useState([]);
