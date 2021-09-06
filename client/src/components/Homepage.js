@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react"
 import { Link } from "react-router-dom";
 import validator from "validator"
-import { Button, Grid, Heading, Container, Box, Text, Input, GridItem } from "@chakra-ui/react";
+import { Button, Grid, Heading, Container, Text, Input, GridItem } from "@chakra-ui/react";
 import "../App.css";
 
 
@@ -34,8 +34,8 @@ function HomePage() {
     });
   }
 
-  const email = (event) => {
-    // console.log(event.target.value)
+  const validateEmail = (event) => {
+    console.log(event.target.value)
     const value = event.target.value;
     setValues((values) => {
       return {
@@ -45,48 +45,71 @@ function HomePage() {
     })
   };
 
+  //   const password = (event) => {
+  //   const value = event.target.value;
+  //    setValues((values) => {
+  //     return {
+  //       ...values,
+  //       password: value
+  //     }
+  //   })
+
+  // }
+
+
+  function submitChanges() {
+    const submitChangesResponse = fetch(
+      `http://localhost:5000/`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }
+    );
+    console.log(submitChangesResponse, "form sumbitted");
+    return submitChangesResponse;
+  }
+
   return (
-    <Container bg="#5E8BFB" align="center" marginTop="300" borderRadius="lg" >
-      <Grid
-        templateColumns="repeat(4, 1fr)"
-        gap={1}>
-        <Box >
-          <GridItem colSpan={2}>
-            <Heading size="3xl" m="10">
+    <form >
+      <Container align="center" marginTop="300" borderRadius="lg" >
+        <Grid h="100px" templateRows="repeat(3, 1fr)" gap={4}>
+          <GridItem colSpan={4}  >
+            <Heading size="3xl" m="4">
               Welcome to the Quiz Manager!
             </Heading>
           </GridItem>
-        </Box>
-        <GridItem colSpan={3}>
-          <Box bg="#5E8BFB" m="2">
+          <GridItem colSpan={4}>
             <Input
               value={values.email}
               onChange={onChangeEmail}
-              maxW="180" mt="14"
+              maxW="180" mt="10" ml="14"
               type="email" bg="white"
               placeholder="Enter your email"
-              onBlur={email}
+              onBlur={validateEmail}
             >
             </Input>
             <Input
               value={values.password}
               onChange={onChangePassword}
-              maxW="180" mt="6"
+              maxW="180" ml="4"
               type="password" bg="white"
-              placeholder="Enter password">
+              placeholder="Enter password"
+            >
             </Input>
-            <Button className="btn" m="6" bg="#ECC94B">
+            <Button onClick={submitChanges} className="btn" m="6" bg="#ECC94B">
               Log in
             </Button>
-            <Box p="4">
-              <Text>
-                Don't have an account? <Link className="signupLink" to="/signup" >Sign up</Link>
-              </Text>
-            </Box>
-          </Box>
-        </GridItem>
-      </Grid>
-    </Container>
+          </GridItem>
+          <GridItem colSpan={4}>
+            <Text>
+              Don't have an account?
+            </Text>
+            <Link className="signupLink" to="/signup" >Sign up</Link>
+          </GridItem>
+        </Grid>
+      </Container>
+    </form>
   );
 }
 
