@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
 import QuizCard from "./QuizCard";
 import { Flex, Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-async function fetchAllQuizzes(id) {
-  const quizzesResponse = await fetch("http://localhost:5000/quizzes").then(
-    (res) => res.json()
-  );
-  console.log(quizzesResponse, "get all quizzes");
-  return quizzesResponse;
-}
 
 function QuizList({ id }) {
+  const history = useHistory();
   const [quizzes, setQuizzes] = useState([]);
 
   async function deleteQuiz(id) {
@@ -24,28 +18,38 @@ function QuizList({ id }) {
     return deleteQuizResponse;
   }
 
+  async function fetchAllQuizzes(id) {
+    const quizzesResponse = await fetch("http://localhost:5000/quizzes", { credentials: 'include'})
+    if (quizzesResponse.status === 401) {
+      history.push("/")
+    } else {
+        return quizzesResponse.json()
+    }
+  }
+
   useEffect(() => {
     async function fetchData() {
       setQuizzes(await fetchAllQuizzes());
     }
     fetchData();
   }, []);
+
   return (
-<Flex  align="center" flexDirection="column" marginTop="30vh" p="20px 0px">
-    <Flex>
-      {quizzes.map((q) => (
-        <QuizCard id={q._id} name={q.name} deleteQuiz={deleteQuiz} />
-      ))}
-    </Flex>
-    <Flex mt="5vh">
+    <Flex align="center" flexDirection="column" marginTop="30vh" p="20px 0px">
+      <Flex>
+        {quizzes.map((q) => (
+          <QuizCard id={q._id} name={q.name} deleteQuiz={deleteQuiz} />
+        ))}
+      </Flex>
+      <Flex mt="5vh">
         <Link to={`/quizzes/add`}>
           <Button className="btn" bg="#ECC94B" variant="outline"  >
             Add new quiz</Button>
         </Link>
-        </Flex>
-</Flex>
+      </Flex>
+    </Flex>
   );
-      }
+}
 export default QuizList;
 
 // On the home page i need to fetch  all quizzes (every quiz id)
