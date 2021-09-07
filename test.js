@@ -97,13 +97,12 @@ const updatedAnswer = updateQuizAnswers (theQuiz, "q2 answer1 UPDATED", 0, 0)
 //   { question: "fwaor" },
 // ];
 
-// barararara[2]= {question: "james is the best"}
+// barararara[2]= {question: "one"}
 
 // console.log(barararara);
 
 // // [
 // //   { question: "one" },
 // //   { question: "two" },
-// //   { question: "james is the best" },
 // //   { question: "fwaor" },
 // // ];
