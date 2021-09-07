@@ -1,16 +1,18 @@
 const User = require("../../models/User.js");
-//handle errirs
+const jwt = require('jsonwebtoken')
+
+//handle errors
 const handleErrors = (err) => {
     console.log(err.message, err.code)
     let errors = { email: '', password: '' };
 
     //incorrect email
 
-    if (err.message === 'incorrect email'){
+    if (err.message === 'incorrect email') {
         errors.email = 'that email is not registered'
     }
     //incorrect password
-    if (err.message === 'incorrect password'){
+    if (err.message === 'incorrect password') {
         errors.password = 'that password is incorrect'
     }
 
@@ -29,6 +31,12 @@ const handleErrors = (err) => {
     return errors;
 }
 
+maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+    return jwt.sign({ id }, 'secret', {
+        expiresIn: maxAge
+    });
+}
 
 const signup_get = (req, res) => {
     res.sendStatus(204)
@@ -43,21 +51,24 @@ const signup_post = async (req, res) => {
     //create and instance of a user and save to db
     try {
         const user = await User.create({ email, password })
-        res.status(201).json(user)
-
+        const token = createToken(user._id);
+        res.cookie('jwt', token, { domain: 'localhost', crossDomain: true, httpOnly: true, maxAge: maxAge * 1000 })
+        return res.status(201).json({ user: user._id })
     } catch (err) {
         const errors = handleErrors(err)
-        res.status(400).json({ errors })
-
+        return res.status(400).json({ errors })
     }
 }
 const login_post = async (req, res) => {
-    const { email, password} = req.body;
+    const { email, password } = req.body;
     try {
-        const user = await User.login(email, password)    
+        const user = await User.login(email, password)
+        const token = createToken(user._id);
+        res.cookie('jwt', token, {domain: 'localhost',crossDomain: true, httpOnly: true, maxAge: maxAge * 1000 })
+        return res.status(200).json({ user: user._id })
     } catch (err) {
         const errors = handleErrors(err)
-        res.status(400).json({ errors }) 
+        return res.status(400).json({ errors })
     }
 };
 

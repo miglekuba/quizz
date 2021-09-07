@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import validator from "validator"
 import { Button, Grid, Heading, Container, Text, Input, GridItem } from "@chakra-ui/react";
 import "../App.css";
 
 
 function HomePage() {
+  const history = useHistory();
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -45,30 +46,24 @@ function HomePage() {
     })
   };
 
-  //   const password = (event) => {
-  //   const value = event.target.value;
-  //    setValues((values) => {
-  //     return {
-  //       ...values,
-  //       password: value
-  //     }
-  //   })
-
-  // }
-
-
-  function submitChanges() {
-    const submitChangesResponse = fetch(
-      `http://localhost:5000/`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+  async function makeLoginRequest() {
+      const loginResponse = await fetch(
+        `http://localhost:5000/`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+          credentials: 'include'
+        }
+      );
+      if (loginResponse.ok) {
+        history.push("/quizzes")
+      } 
+      else {
+        console.log(loginResponse, "log in failed");
       }
-    );
-    console.log(submitChangesResponse, "form sumbitted");
-    return submitChangesResponse;
-  }
+    }
+
 
   return (
     <form >
@@ -97,7 +92,7 @@ function HomePage() {
               placeholder="Enter password"
             >
             </Input>
-            <Button onClick={submitChanges} className="btn" m="6" bg="#ECC94B">
+            <Button onClick={makeLoginRequest} className="btn" m="6" bg="#ECC94B">
               Log in
             </Button>
           </GridItem>

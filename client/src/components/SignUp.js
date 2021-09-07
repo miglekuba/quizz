@@ -12,7 +12,6 @@ function SignUp() {
         password: '',
         error: false
     })
-    console.log(values)
 
     const onChangeEmail = (event) => {
         const value = event.target.value;
@@ -46,13 +45,14 @@ function SignUp() {
     };
 
 
-    function submitChanges() {
-        const submitChangesResponse = fetch(
+   const submitChanges = async ()=> {
+        const submitChangesResponse = await fetch(
             `http://localhost:5000/signup`,
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(values),
+                credentials: 'include'
             }
         );
         console.log(submitChangesResponse, "user created");
