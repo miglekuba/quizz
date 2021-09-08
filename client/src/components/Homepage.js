@@ -64,8 +64,7 @@ function HomePage() {
       }
     }
 
-
-  return (
+    return (
     <form >
       <Container align="center" marginTop="300" borderRadius="lg" >
         <Grid h="100px" templateRows="repeat(3, 1fr)" gap={4}>

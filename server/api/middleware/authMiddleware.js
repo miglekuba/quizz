@@ -19,4 +19,7 @@ const requireAuth = (req, res, next) => {
     }
 }
 
+
+//add a fucntin which requires a token of specific role
+
 module.exports = { requireAuth }

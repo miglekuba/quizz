@@ -9,6 +9,7 @@
   "author": "Migle Kuba",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bootstrap": "^4.6.0",
     "concurrently": "^6.1.0",
     "cookie-parser": "^1.4.5",
@@ -18,7 +19,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.8",
     "react-bootstrap": "^1.6.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

@@ -7,7 +7,7 @@ import Question from "./Question";
 
 
 async function fetchQuiz(id) {
-  const quizResponse = await fetch(`http://localhost:5000/quizzes/${id}`).then(
+  const quizResponse = await fetch(`http://localhost:5000/quizzes/${id}`, { credentials: 'include'}).then(
     (res) => res.json()
   );
   console.log(quizResponse, "get quiz");

@@ -1,0 +1,28 @@
+version: "3"
+services:
+  quizz_server:
+    build: ./server
+    volumes:
+      - ./server:/app/server
+    # links:
+    #   - mongo
+    # depends_on:
+    #   - mongo
+    ports:
+      - 5000:5000
+    environment: 
+      MONGO_URI: mongodb://mongo:27017/quiz-app?authSource=admin
+      MONGO_USER: user
+      MONGO_PASSWORD: password
+      
+  mongo:
+    image: mongo:4.0
+    # volumes:
+    #   - ./scripts/docker-mongo-init:/docker-entrypoint-initdb.d
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017:27017
+  
+
