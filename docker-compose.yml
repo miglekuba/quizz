@@ -17,8 +17,8 @@ services:
       
   mongo:
     image: mongo:4.0
-    # volumes:
-    #   - ./scripts/docker-mongo-init:/docker-entrypoint-initdb.d
+    volumes:
+      - ./server/scripts/mongo-init:/docker-entrypoint-initdb.d #this would volume in the mongo-init script into docker container so the db can be seeded locally  
     environment:
       MONGO_INITDB_ROOT_USERNAME: user
       MONGO_INITDB_ROOT_PASSWORD: password

@@ -5,7 +5,7 @@ const quizRoutes = require('./api/routes/quiz-routes');
 const authRoutes = require('./api/routes/auth-routes')
 const { requireAuth } = require('./api/middleware/authMiddleware')
 const cookieParser = require('cookie-parser')
-const setUpDatabase = require('./setup-db.js');
+
 
 const app = express();
 app.use(express.json());
@@ -24,8 +24,4 @@ const port = 5000;
 
 app.listen(
   port,
-  async () => {
-    await setUpDatabase();
-    console.log(`Server runnning on port: ${port}`)
-  },
-);
+  () => console.log(`Server runnning on port: ${port}`));

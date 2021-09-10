@@ -16,7 +16,7 @@ const User = new Schema(
     },
 
     password: { type: String, required: [true, 'Please enter the password'] },
-    role: { type: String, enum: ["ADMIN", "READ_ONLY_USER", "LIMITED_USER"] },
+    role: { type: String, enum: ["ADMIN", "VIEW_USER", "LIMITED_USER"] },
   },
   { timestamps: true }
 );
