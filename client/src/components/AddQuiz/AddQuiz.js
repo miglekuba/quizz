@@ -65,6 +65,7 @@ function AddQuiz({ match }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(quiz),
+        credentials: 'include'
       }
     );
     console.log(submitChangesResponse, "quiz updated");

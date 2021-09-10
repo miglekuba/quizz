@@ -4,7 +4,7 @@ import  { Redirect } from 'react-router-dom'
 
 
 async function fetchQuiz(id) {
-  const quizResponse = await fetch(`http://localhost:5000/quizzes/${id}`).then(
+  const quizResponse = await fetch(`http://localhost:5000/quizzes/${id}`, {credentials: 'include'}).then(
     (res) => res.json()
   );
   console.log(quizResponse, "get quiz");
@@ -65,6 +65,7 @@ function EditQuiz({ match }) {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(quiz),
+        credentials: 'include'
       }
     );
     console.log(submitChangesResponse, "quiz updated");

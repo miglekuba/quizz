@@ -11,7 +11,7 @@ services:
     ports:
       - 5000:5000
     environment: 
-      MONGO_URI: mongodb://mongo:27017/quiz-app?authSource=admin
+      MONGO_CONNECTION_URI: mongodb://user:password@mongo:27017/quiz-app?authSource=admin
       MONGO_USER: user
       MONGO_PASSWORD: password
       

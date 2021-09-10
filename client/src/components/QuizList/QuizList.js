@@ -11,7 +11,8 @@ function QuizList({ id }) {
   async function deleteQuiz(id) {
     const deleteQuizResponse = await fetch(
       `http://localhost:5000/quizzes/${id}`,
-      { method: "DELETE" }
+      { method: "DELETE",
+      credentials: 'include' }
     );
     console.log(deleteQuizResponse, "quiz deleted")
     setQuizzes(await fetchAllQuizzes())
@@ -32,7 +33,7 @@ function QuizList({ id }) {
       setQuizzes(await fetchAllQuizzes());
     }
     fetchData();
-  }, []);
+  },[]);
 
   return (
     <Flex align="center" flexDirection="column" marginTop="30vh" p="20px 0px">

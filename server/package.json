@@ -4,7 +4,8 @@
   "description": "Quiz built with the MERN stack",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -r dotenv/config server.js"
+    "start:dev": "nodemon -r dotenv/config server.js",
+    "start": "node server.js"
   },
   "author": "Migle Kuba",
   "license": "MIT",

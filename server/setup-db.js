@@ -3,7 +3,11 @@ const connection = require("./db.js");
 
 const setUpDatabase = async () => {
   try {
-    await connection.dropCollection("quizzes");
+    await connection.dropCollection('quizzes')
+  } catch (error) {
+    console.log('error on dropping collection', error)
+  }
+  try {
     await Quiz.insertMany(
       [
         {
@@ -92,7 +96,7 @@ const setUpDatabase = async () => {
       ]
     );
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.log("error on db seeding", error);
   }
 };
 
