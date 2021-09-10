@@ -9,7 +9,7 @@ const requireAuth = (req, res, next) => {
                 console.log(err.message)
                 res.sendStatus(401)
             } else {
-                console.log(decodedToken);
+                console.log("received valid token",decodedToken);
                 next();
             }
         })
